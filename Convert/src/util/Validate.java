@@ -6,31 +6,36 @@
 package util;
 
 import java.util.Scanner;
+import exception.OutOfRangeException;
 
 /**
  *
  * @author ASUS
  */
-public class Validator {
+public class Validate {
 
     private final static Scanner SC = new Scanner(System.in);
     private static final String BINARY_VALID = "^[01]+$";
     private static final String DECIMAL_VALID = "^[0-9]+$";
-    private static final String HEXADECIMAL_VALID = "^[0-9A-F]+$";
+    private static final String HEXADECIMAL_VALID = "^[0-9a-fA-F]+$";
 
     //check user input number limit
-    public static int checkInputIntLimit(int min, int max) {
+    public static int checkInputIntLimit(int minValue, 
+            int maxValue, 
+            String errorMessageInvalid,
+            String errorMessageOutOfRange) {
         //loop until user input correct
         while (true) {
             try {
                 int result = Integer.parseInt(SC.nextLine().trim());
-                if (result < min || result > max) {
-                    throw new NumberFormatException();
+                if (result < minValue || result > maxValue) {
+                    throw new OutOfRangeException(errorMessageOutOfRange);
                 }
                 return result;
             } catch (NumberFormatException e) {
-                System.err.println("Please input number in rage [" + min + ", " + max + "]");
-                System.out.print("Enter again: ");
+                System.err.println(errorMessageInvalid);
+            }catch(OutOfRangeException e){
+                System.out.println(e.getMessage());
             }
         }
     }
@@ -48,7 +53,6 @@ public class Validator {
             else{
             System.err.println("Must be enter 0 or 1");
             System.out.print("Enter again: ");
-                
             }
         }
     }

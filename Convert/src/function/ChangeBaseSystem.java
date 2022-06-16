@@ -1,36 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package function;
 
-/**
- *
- * @author ASUS
- */
-public class Convert {
+public class ChangeBaseSystem {
 
-    public String convert(int heso1, int heso2, String value) {
+    public String convert(int baseInput, int baseOutput, String value) {
         String result = "";
-        switch (heso2) {
+        switch (baseOutput) {
             case 1:
-                result = convertToBinary(heso1, value);
+                result = convertToBinary(baseInput, value);
                 break;
             case 2:
-                result = convertToDecimal(heso1, value);
+                result = convertToDecimal(baseInput, value);
                 break;
             case 3:
-                result = convertToHexa(heso1, value);
+                result = convertToHexa(baseInput, value);
                 break;
-
         }
         return result;
     }
 
-    public String convertToBinary(int heso1, String value) {
+    public String convertToBinary(int baseInput, String value) {
         String result = "";
-        switch (heso1) {
+        switch (baseInput) {
             case 1:
                 result = value;
                 break;
@@ -44,9 +34,9 @@ public class Convert {
         return result;
     }
     
-    public String convertToDecimal(int heso1, String value) {
+    public String convertToDecimal(int baseInput, String value) {
         String result = "";
-        switch (heso1) {
+        switch (baseInput) {
             case 1:
                 result = String.valueOf(Integer.parseInt(value, 2));
                 break;
@@ -60,14 +50,14 @@ public class Convert {
         return result;
     }
     
-    public String convertToHexa(int heso1, String value) {
+    public String convertToHexa(int baseInput, String value) {
         String result = "";
-        switch (heso1) {
+        switch (baseInput) {
             case 1:
                 result = Integer.toHexString(Integer.parseInt(value,2));
                 break;
             case 2:
-                result = Integer.toHexString(Integer.parseInt(value,10));
+                result = Integer.toHexString(Integer.parseInt(value));
                 break;
             case 3:
                 result = value;
